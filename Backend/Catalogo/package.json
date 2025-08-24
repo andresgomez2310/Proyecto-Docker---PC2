@@ -1,0 +1,15 @@
+{
+  "name": "catalogo",
+  "version": "1.0.0",
+  "description": "Microservicio de catálogo",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node index.js",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.0",
+    "mongoose": "^8.0.0"
+  }
+}

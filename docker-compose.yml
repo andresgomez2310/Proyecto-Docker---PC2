@@ -1,28 +1,18 @@
+version: "3.9"
+
 services:
-  app:
+  catalogo:
     image: node:18
-    container_name: node_app
+    container_name: catalogo_service
     working_dir: /usr/src/app
     volumes:
-      - ./:/usr/src/app
+      - ./Backend/Catalogo:/usr/src/app
     command: sh -c "npm install && npm run dev"
     ports:
-      - "3000:3000"
-    depends_on:
-      - db
-
-  db:
-    image: mongo:6
-    container_name: mongo_db
-    restart: always
-    ports:
-      - "27017:27017"
+      - "3001:3000"
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root1
-    volumes:
-      - mongo_data:/data/db
-      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - MONGO_URI=mongodb+srv://andrea:uOwqLwD8WH8UqlTQ@cluster0.eq2dp5d.mongodb.net/biblioteca?retryWrites=true&w=majority
+      - COLLECTION=Catalogo
 
 volumes:
   mongo_data:
